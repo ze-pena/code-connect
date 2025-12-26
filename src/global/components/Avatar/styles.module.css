@@ -1,0 +1,16 @@
+.avatar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.avatarImage {
+  border-radius: 50%;
+  background-color: var(--primary-color);
+}
+
+.avatarUsername {
+  color: var(--primary-color);
+  font-size: 1rem;
+  font-weight: 100;
+}
