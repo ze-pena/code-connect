@@ -14,7 +14,7 @@ export default function Avatar({ author }: Props) {
     <div className={styles.avatar}>
       <Image
         className={styles.avatarImage}
-        src={author.avatar ?? avatarFallback}
+        src={author?.avatar ?? avatarFallback}
         alt="Avatar do usuário"
         width={36}
         height={36}
