@@ -4,12 +4,19 @@ import styles from "./styles.module.css";
 interface Props {
   label: string;
   path: string;
+  isActive?: boolean;
 }
 
-export default function Button({ label, path }: Props) {
+export default function Button({ label, path, isActive = true }: Props) {
   return (
-    <Link href={path} className={styles.button}>
-      <span className={styles.buttonLabel}>{label}</span>
-    </Link>
+    <button
+      className={`${styles.button} ${
+        isActive ? styles.active : styles.inactive
+      }`}
+    >
+      <Link href={path}>
+        <span>{label}</span>
+      </Link>
+    </button>
   );
 }
