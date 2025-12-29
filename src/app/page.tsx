@@ -1,7 +1,9 @@
-import Link from "next/link";
+import prisma from "../../prisma/db";
+
 import logger from "@/logger";
 
 import Card from "@/global/components/Card";
+import LinkButton from "@/global/components/LinkButton";
 
 import { IPost } from "@/interfaces/Post";
 import { IPaginatedResponse } from "@/interfaces/Response";
@@ -10,18 +12,35 @@ import styles from "./page.module.css";
 
 type FetchPostResponse = Promise<IPaginatedResponse<IPost>>;
 
-const baseUrl = "http://localhost:3042";
+// const baseUrl = "http://localhost:3042";
 
 async function fetchPosts(page: number): FetchPostResponse {
   try {
-    const response = await fetch(`${baseUrl}/posts?_page=${page}&_per_page=6`);
+    const perPage = 6;
+    const pageSkip = (page - 1) * perPage;
 
-    if (!response.ok) {
-      throw new Error("Failed to fetch post data!");
-    }
+    const posts = await prisma.post.findMany({
+      take: perPage,
+      skip: pageSkip,
+      orderBy: { createdAt: "desc" },
+      include: {
+        author: true,
+      },
+    });
+
+    const postsLength = await prisma.post.count();
+    const pagesLength = Math.ceil(postsLength / perPage);
+
+    const prev = page > 1 ? page - 1 : null;
+    const next = page !== pagesLength ? page + 1 : null;
+    const response: IPaginatedResponse<IPost> = {
+      data: posts,
+      prev,
+      next,
+    };
 
     logger.info("This request was a success!");
-    return response.json() as FetchPostResponse;
+    return response;
   } catch (error: unknown) {
     let errorMessage = "An unexpected error has occurred";
 
@@ -56,19 +75,19 @@ export default async function Home({ searchParams }: PageParams) {
       </ul>
 
       <nav className={styles.pagination}>
-        <li
-          className={`${styles.button} ${
-            prev ? styles.active : styles.inactive
-          }`}
-        >
-          <Link href={`/?page=${prev}`}>Página anterior</Link>
+        <li>
+          <LinkButton
+            path={`/?page=${prev}`}
+            label="Página anterior"
+            isActive={prev !== null}
+          />
         </li>
-        <li
-          className={`${styles.button} ${
-            next ? styles.active : styles.inactive
-          }`}
-        >
-          <Link href={`/?page=${next}`}>Próxima página</Link>
+        <li>
+          <LinkButton
+            path={`/?page=${next}`}
+            label="Próxima página"
+            isActive={next !== null}
+          />
         </li>
       </nav>
     </div>

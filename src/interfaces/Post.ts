@@ -12,5 +12,8 @@ export interface IPost {
   slug: string;
   body: string;
   markdown: string;
-  author: IAuthor;
+  authorId: number;
+  author?: IAuthor;
+  createdAt: Date;
+  updatedAt: Date;
 }
