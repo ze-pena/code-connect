@@ -34,7 +34,7 @@ export default function Card({ post, isPostPage = false }: Props) {
         <h3>{post.title}</h3>
         <p>{post.body}</p>
         {!isPostPage && (
-          <LinkButton label="Ver detalhes" path={`/posts/${post.slug}`} />
+          <LinkButton url={`/posts/${post.slug}`} label="Ver detalhes" />
         )}
       </section>
 

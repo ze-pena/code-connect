@@ -16,7 +16,7 @@ export default function NotFound() {
       />
       <h1>OPS! Página não encontrada.</h1>
       <p>Você pode voltar ao feed e continuar buscando projetos incríveis!</p>
-      <LinkButton path={"/"} label="Voltar ao feed" />
+      <LinkButton url={"/"} label="Voltar ao feed" />
     </div>
   );
 }

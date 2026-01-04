@@ -18,7 +18,7 @@ export default function Error() {
       />
       <h1>Opa! Um erro ocorreu.</h1>
       <p>Não conseguimos carregar a página. Volte para seguir navegando.</p>
-      <LinkButton path={"/"} label="Voltar ao feed" />
+      <LinkButton url={"/"} label="Voltar ao feed" />
     </div>
   );
 }
