@@ -4,7 +4,7 @@ import styles from "./styles.module.css";
 import { IAuthor } from "@/interfaces/Post";
 
 interface Props {
-  author: IAuthor;
+  author?: IAuthor;
 }
 
 const avatarFallback = "/assets/images/icon_fallback.png";
@@ -20,7 +20,7 @@ export default function Avatar({ author }: Props) {
         height={36}
       />
 
-      <span className={styles.avatarUsername}>@{author.username}</span>
+      <span className={styles.avatarUsername}>@{author?.username}</span>
     </div>
   );
 }
