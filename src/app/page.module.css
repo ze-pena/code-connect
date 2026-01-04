@@ -2,7 +2,7 @@
   display: flex;
   width: 100dvw;
   height: 100dvh;
-  padding: 32px;
+  padding: 24px;
   gap: 24px;
   background-color: var(--primary-background);
 }
@@ -67,6 +67,7 @@
 .listItem {
   flex-grow: 1;
   flex-basis: 485px;
+  max-width: min-content;
 }
 
 .pagination {

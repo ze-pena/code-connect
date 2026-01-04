@@ -1,8 +1,12 @@
 :root {
   --primary-background: #00090e;
   --primary-foreground: #171d1f;
+
   --secondary-background: #171d1f;
   --secondary-foreground: #888888;
+
+  --tertiary-background: #81fe88;
+  --tertiary-foreground: #ffffff;
 
   --primary-color: #ffffff;
   --secondary-color: #81fe88;
