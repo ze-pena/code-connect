@@ -73,6 +73,8 @@ export default async function Home({ searchParams }: PageParams) {
     next,
   } = await fetchPosts(page ? Number(page) : 1, q);
 
+  console.log(postList);
+
   return (
     <div className={styles.page}>
       <SearchForm />
