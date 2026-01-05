@@ -1,8 +1,6 @@
 import prisma from "./db";
 
 async function main() {
-  await prisma.$connect();
-
   const author = {
     name: "Ana Beatriz",
     username: "anabeatriz_dev",
@@ -152,12 +150,11 @@ async function main() {
 
 main()
   .then(async () => {
+    await prisma.$disconnect();
     console.log("Seeding completed successfully.");
   })
   .catch(async (e) => {
+    await prisma.$disconnect();
     console.log(`Seeding failed. Error message: ("${e.message}")`);
     process.exit(1);
-  })
-  .finally(async () => {
-    await prisma.$disconnect();
   });
