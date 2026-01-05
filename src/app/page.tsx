@@ -38,6 +38,8 @@ async function fetchPosts(page: number, search?: string): FetchPostResponse {
       },
     });
 
+    console.log("Searched for this posts: ", posts);
+
     const postsLength = await prisma.post.count({ where });
     const pagesLength = Math.ceil(postsLength / perPage);
 
