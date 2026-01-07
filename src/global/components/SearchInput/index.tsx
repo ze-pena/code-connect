@@ -30,7 +30,7 @@ export default function SearchInput({
     <div className={styles.searchInput}>
       <picture>
         <Image
-          src="assets/icons/search_icon.svg"
+          src="/assets/icons/search_icon.svg"
           alt="Search icon"
           width={20}
           height={20}
