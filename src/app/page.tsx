@@ -28,13 +28,14 @@ async function fetchPosts(page: number, search?: string): FetchPostResponse {
     const perPage = 6;
     const pageSkip = (page - 1) * perPage;
 
-    const posts = await prisma.post.findMany({
+    const posts: IPost[] = await prisma.post.findMany({
       take: perPage,
       skip: pageSkip,
       where,
-      orderBy: { createdAt: "desc" },
+      orderBy: { id: "desc" },
       include: {
         author: true,
+        comments: true,
       },
     });
 
