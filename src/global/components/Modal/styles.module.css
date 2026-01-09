@@ -1,0 +1,53 @@
+.dialog {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translate(-50%, -25%);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--modal-background);
+  padding: 24px;
+  width: 80%;
+  max-width: 960px;
+  border: none;
+  border-radius: 8px;
+  transition: opacity 400ms ease;
+
+  &[aria-modal="false"] {
+    opacity: 0;
+  }
+
+  &[aria-modal="true"] {
+    opacity: 1;
+  }
+
+  & > header {
+    display: flex;
+    justify-content: flex-end;
+
+    & > button {
+      cursor: pointer;
+      color: var(--modal-foreground);
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 500;
+      padding: 6px 14px 10px;
+      background-color: transparent;
+      outline: none;
+      border: 1px solid transparent;
+      border-radius: 4px;
+
+      &:hover {
+        border-color: var(--tertiary-background);
+        color: var(--secondary-color);
+      }
+    }
+  }
+
+  & > div {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
