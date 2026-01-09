@@ -28,14 +28,14 @@ export default function SearchInput({
 
   return (
     <div className={styles.searchInput}>
-      <picture>
+      <figure>
         <Image
           src="/assets/icons/search_icon.svg"
           alt="Search icon"
           width={20}
           height={20}
         />
-      </picture>
+      </figure>
       <input
         id={`search-${name}`}
         name={name}
