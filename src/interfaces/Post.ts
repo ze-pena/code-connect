@@ -3,6 +3,8 @@ export interface IAuthor {
   name: string;
   username: string;
   avatar: string;
+  posts?: IPost[];
+  comments?: Comment[];
 }
 
 export interface IPost {
@@ -16,4 +18,20 @@ export interface IPost {
   author?: IAuthor;
   createdAt: Date;
   updatedAt: Date;
+  comments?: Comment[];
+  likes: number;
+}
+
+export interface IComment {
+  id: number;
+  text: string;
+  createdAt: Date;
+  updatedAt: Date;
+  authorId: number;
+  author?: IAuthor;
+  postId: number;
+  post?: IPost;
+  parentId?: number;
+  parent?: Comment;
+  children: Comment[];
 }
