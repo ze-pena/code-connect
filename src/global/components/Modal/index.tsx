@@ -43,7 +43,7 @@ const Modal = forwardRef(({ children }: Props, ref) => {
       <header>
         <button onClick={closeModal}>x</button>
       </header>
-      <div>{children}</div>
+      {children}
     </dialog>
   );
 });
