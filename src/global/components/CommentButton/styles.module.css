@@ -1,0 +1,72 @@
+.commentButton {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background-color: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  outline: none;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  &:hover {
+    border-color: var(--secondary-foreground);
+    transition: border-color 200ms ease;
+  }
+
+  & > figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 24px;
+    height: auto;
+    max-height: 24px;
+  }
+
+  & > span {
+    color: var(--secondary-foreground);
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+}
+
+.commentForm {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  & > h3 {
+    color: var(--secondary-color);
+    font-size: 1.75rem;
+    font-weight: 400;
+  }
+
+  & > textarea {
+    resize: none;
+    padding: 16px;
+    color: var(--secondary-background);
+    font-size: 1.15rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: border-color 200ms ease;
+    background-color: var(--modal-foreground);
+
+    &:focus {
+      outline: none;
+      border-color: var(--tertiary-background);
+    }
+  }
+
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
