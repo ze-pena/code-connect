@@ -1,0 +1,65 @@
+.replyForm {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.parentComment {
+  display: flex;
+
+  & > picture {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    max-width: 40px;
+    max-height: 40px;
+  }
+
+  & > strong {
+    color: var(--secondary-color);
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 8px 0 0 24px;
+  }
+
+  & > p {
+    flex-grow: 1;
+    word-break: break-word;
+    white-space: break-spaces;
+    text-align: justify;
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: 200;
+    margin: 8px 0 0 8px;
+  }
+}
+
+.childComment {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  & > textarea {
+    resize: none;
+    padding: 16px;
+    color: var(--secondary-background);
+    font-size: 1.15rem;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: border-color 200ms ease;
+    background-color: var(--modal-foreground);
+
+    &:focus {
+      outline: none;
+      border-color: var(--tertiary-background);
+    }
+  }
+
+  & > div {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+}
