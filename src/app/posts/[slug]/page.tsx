@@ -6,6 +6,7 @@ import logger from "@/logger";
 
 import Card from "@/global/components/Card";
 import Markdown from "@/global/components/Markdown";
+import CommentList from "@/global/components/CommentList";
 
 import { ICommonResponse } from "@/interfaces/Response";
 import { IPost } from "@/interfaces/Post";
@@ -22,6 +23,17 @@ async function fetchPostData(slug: string): FetchPostData {
       where: { slug },
       include: {
         author: true,
+        comments: {
+          where: { parentId: null },
+          include: {
+            author: true,
+            children: {
+              include: {
+                author: true,
+              },
+            },
+          },
+        },
       },
     });
 
@@ -58,6 +70,7 @@ export default async function PostPage({ params }: PostPageParams) {
     <div className={styles.page}>
       <Card post={post} isPostPage />
       <Markdown markdown={post.markdown} />
+      <CommentList commentList={post.comments} />
     </div>
   );
 }
