@@ -22,7 +22,10 @@ export default function CommentButton({ comments, action }: Props) {
 
   const submitForm = (formData: FormData) => {
     if (modalRef.current) modalRef.current.closeModal();
-    action(formData);
+
+    setTimeout(() => {
+      action(formData);
+    }, 250);
   };
 
   return (
