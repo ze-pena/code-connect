@@ -4,7 +4,7 @@ export interface IAuthor {
   username: string;
   avatar: string;
   posts?: IPost[];
-  comments?: Comment[];
+  comments?: IComment[];
 }
 
 export interface IPost {
@@ -18,7 +18,7 @@ export interface IPost {
   author?: IAuthor;
   createdAt: Date;
   updatedAt: Date;
-  comments?: Comment[];
+  comments?: IComment[];
   likes: number;
 }
 
@@ -32,6 +32,6 @@ export interface IComment {
   postId: number;
   post?: IPost;
   parentId?: number;
-  parent?: Comment;
-  children: Comment[];
+  parent?: IComment;
+  children: IComment[];
 }
