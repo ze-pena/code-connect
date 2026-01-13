@@ -7,7 +7,7 @@ interface Props {
 export default function Markdown({ markdown }: Props) {
   return (
     <div className={styles.markdown}>
-      <h2>Código</h2>
+      <h2>Código:</h2>
       <div dangerouslySetInnerHTML={{ __html: markdown }} />
     </div>
   );
