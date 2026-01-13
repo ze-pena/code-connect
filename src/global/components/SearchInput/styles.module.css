@@ -3,7 +3,7 @@
   flex-grow: 1;
   display: flex;
 
-  & > picture {
+  & > figure {
     position: absolute;
     top: 50%;
     left: 8px;
