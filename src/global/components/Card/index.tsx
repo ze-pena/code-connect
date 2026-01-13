@@ -2,6 +2,10 @@ import Image from "next/image";
 
 import Avatar from "../Avatar";
 import LinkButton from "../LinkButton";
+import LikeButton from "../LikeButton";
+import CommentButton from "../CommentButton";
+
+import { incrementThumbsUp, postComment } from "@/actions";
 
 import styles from "./styles.module.css";
 
@@ -15,6 +19,9 @@ interface Props {
 const bannerFallback = "/assets/images/banner_fallback.png";
 
 export default function Card({ post, isPostPage = false }: Props) {
+  const submitThumbsUp = incrementThumbsUp.bind(null, post);
+  const submitComment = postComment.bind(null, post);
+
   return (
     <div className={styles.card}>
       <header className={styles.cardHeader}>
@@ -39,7 +46,18 @@ export default function Card({ post, isPostPage = false }: Props) {
       </section>
 
       <footer className={styles.cardFooter}>
-        <Avatar author={post.author} />
+        <div className={styles.cardFooterActions}>
+          <form action={submitThumbsUp}>
+            <LikeButton likes={post.likes} type="submit" />
+          </form>
+          <CommentButton
+            comments={post.comments?.length ?? 0}
+            action={submitComment}
+          />
+        </div>
+        <div className={styles.cardFooterUser}>
+          <Avatar author={post.author} />
+        </div>
       </footer>
     </div>
   );
