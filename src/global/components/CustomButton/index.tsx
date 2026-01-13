@@ -1,22 +1,26 @@
+"use client";
+
 import { ReactNode } from "react";
 import styles from "./styles.module.css";
 
 type ButtonType = "button" | "submit" | "reset";
 
 interface Props {
-  type: ButtonType;
   name: string;
   label: string;
-  isDisabled: boolean;
+  type?: ButtonType;
+  isDisabled?: boolean;
   icon?: ReactNode;
+  onClick?: () => void;
 }
 
 export default function CustomButton({
-  type,
   name,
   label,
-  isDisabled,
+  type = "button",
+  isDisabled = false,
   icon,
+  onClick,
 }: Props) {
   return (
     <button
@@ -25,6 +29,7 @@ export default function CustomButton({
       id={`custom-button--${name}`}
       className={styles.customButton}
       disabled={isDisabled}
+      onClick={() => onClick?.()}
     >
       <span>{label}</span>
       {icon && <figure>{icon}</figure>}
