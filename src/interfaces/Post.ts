@@ -31,7 +31,7 @@ export interface IComment {
   author?: IAuthor;
   postId: number;
   post?: IPost;
-  parentId?: number;
+  parentId: number | null;
   parent?: IComment;
-  children: IComment[];
+  children?: IComment[];
 }
