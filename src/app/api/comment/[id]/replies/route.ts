@@ -1,12 +1,13 @@
+import { NextRequest } from "next/server";
 import prisma from "../../../../../../prisma/db";
 
-interface Params {
-  params: {
+interface Context {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-export async function GET(_request: Request, { params }: Params) {
+export async function GET(_request: NextRequest, { params }: Context) {
   const { id } = await params;
   const query = await prisma.comment.findMany({
     where: {
