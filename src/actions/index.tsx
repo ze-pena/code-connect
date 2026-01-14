@@ -1,3 +1,5 @@
+"use server";
+
 import prisma from "../../prisma/db";
 
 import { revalidatePath } from "next/cache";
@@ -5,8 +7,6 @@ import { revalidatePath } from "next/cache";
 import { IComment, IPost } from "@/interfaces/Post";
 
 export async function incrementThumbsUp(post: IPost) {
-  "use server";
-
   await prisma.post.update({
     where: {
       id: post.id,
@@ -23,8 +23,6 @@ export async function incrementThumbsUp(post: IPost) {
 }
 
 export async function postComment(post: IPost, formData: FormData) {
-  "use server";
-
   const author = await prisma.user.findFirst({
     where: {
       username: "anabeatriz_dev",
@@ -45,10 +43,6 @@ export async function postComment(post: IPost, formData: FormData) {
 }
 
 export async function postReply(parent: IComment, formData: FormData) {
-  "use server";
-
-  console.log("this is the parent:", parent);
-
   const author = await prisma.user.findFirst({
     where: {
       username: "anabeatriz_dev",
@@ -66,7 +60,7 @@ export async function postReply(parent: IComment, formData: FormData) {
       text: formData.get("text")?.toString() ?? "",
       authorId: author!.id,
       postId: post!.id,
-      parentId: parent.parentId ?? parent.id,
+      parentId: parent.id,
     },
   });
 
