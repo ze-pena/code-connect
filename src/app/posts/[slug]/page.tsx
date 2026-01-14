@@ -27,11 +27,7 @@ async function fetchPostData(slug: string): FetchPostData {
           where: { parentId: null },
           include: {
             author: true,
-            children: {
-              include: {
-                author: true,
-              },
-            },
+            children: true,
           },
         },
       },
